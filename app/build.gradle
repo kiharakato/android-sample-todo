@@ -1,0 +1,71 @@
+buildscript {
+    ext.kotlin_version = '1.0.0-beta-1038'
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+repositories {
+    jcenter()
+    maven {
+        url 'http://oss.jfrog.org/artifactory/oss-snapshot-local'
+    }
+    maven {
+        url 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
+    mavenCentral()
+}
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion '22.0.1'
+    defaultConfig {
+        applicationId 'com.kihare.todo.app'
+        minSdkVersion 19
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+    buildTypes {
+        debug {
+            applicationIdSuffix '.debug'
+            versionNameSuffix '.debug'
+        }
+    }
+    productFlavors {
+        dev {
+            minSdkVersion 19
+            applicationId 'com.kihare.todo.app.dev'
+            targetSdkVersion 22
+            versionCode 1
+            versionName '1.0'
+        }
+    }
+    packagingOptions {
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:appcompat-v7:23.1.1'
+    compile 'com.android.support:palette-v7:23.1.1'
+    compile 'com.android.support:recyclerview-v7:23.1.1'
+    compile 'com.android.support:design:23.1.1'
+    compile 'com.jakewharton:kotterknife:0.1.0-SNAPSHOT'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}

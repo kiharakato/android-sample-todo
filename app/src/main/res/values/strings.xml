@@ -1,0 +1,14 @@
+<resources>
+  <string name="app_name">Todo</string>
+
+  <string name="hello_world">Hello world!</string>
+  <string name="action_settings">Settings</string>
+
+
+  <!--development-->
+  <string name="create_todo_success">Success! new create todo!</string>
+  <string name="create_todo_failed">failed! new create todo!</string>
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="blank"/>
+</resources>
